@@ -1,9 +1,8 @@
 
 const printPlanets = () => {
     mainContainer.innerHTML = '...Cargando...';
-    getPlanets().then( response => {
+    getPlanets().then(response => {
         let planetsCards = formatPlanetsCards(response);
-        console.log(planetsCards);
         mainContainer.innerHTML = `
             <section class="section">
                 <h3 class="section__title"> PLANETS </h3>
@@ -15,25 +14,23 @@ const printPlanets = () => {
 
         addEventsToPlanetsLinks(response);
     })
-
-
 }
 
 const formatPlanetsCards = (planets) => {
-    return planets   
+    return planets
         .map(planet => {
-            return  `
+            return `
             <div class="card">
-                <h4 class="card__title">  ${planet.name} </h4>
+                <h4 class="card__title"> ${planet.name} </h4>
                 <img class="card__img" src="${planet.img}">
                 <div class="card__info-container">
-                    <p class="card__info-title">  POPULATION </p>
-                    <p class="card__info">  ${planet.population} </p>
-                    <p class="card__info-title">  DIAMETER </p>
-                    <p class="card__info">  ${planet.diameter} </p>
-                    <p class="card__info-title">  CLIMATE </p>
-                    <p class="card__info">  ${planet.climate} </p>
-                    <a class="card__link" href="#">  + MORE DETAILS </a>
+                    <p class="card__info-title"> POPULATION </p>
+                    <p class="card__info"> ${planet.population} </p>
+                    <p class="card__info-title"> DIAMETER </p>
+                    <p class="card__info"> ${planet.diameter} </p>
+                    <p class="card__info-title"> CLIMATE </p>
+                    <p class="card__info"> ${planet.climate} </p>
+                    <a class="card__link" href="#"> + MORE DETAILS </a>
                 </div>
             </div>`
         }).join('');
@@ -42,7 +39,7 @@ const formatPlanetsCards = (planets) => {
 
 const addEventsToPlanetsLinks = (planets) => {
     let cardLinks = [...document.getElementsByClassName('card__link')];
-    cardLinks.forEach((element,i) => {
+    cardLinks.forEach((element, i) => {
         element.addEventListener('click', () => {
             printDetailPlanet(planets[i].urlDetail);
         });
@@ -51,7 +48,7 @@ const addEventsToPlanetsLinks = (planets) => {
 
 
 const getPlanets = async () => {
-    let url =  URL_BASE + '/planets/';
+    let url = URL_BASE + '/planets/';
     let urlNext = null;
     let data;
     let dataAll = [];
@@ -309,11 +306,10 @@ const getPlanets = async () => {
 }
 
 const mapDataPlanets = (data) => {
-    let dataMapped =  data
-        .map(planet => { 
-            console.log(planet);
+    let dataMapped = data
+        .map(planet => {
             let object = {
-                name : planet.name.toUpperCase(),
+                name: planet.name.toUpperCase(),
                 img: "assets/images/planets/" + planet.url.replace("https://swapi.dev/api/planets/", "").split('/')[0] + ".jpg",
                 population: planet.population,
                 diameter: planet.diameter,
