@@ -23,12 +23,10 @@ const printHome = () => {
 
 const addEventsToHomeLinks = () => {
     const homeLinks = [...document.getElementsByClassName('nav__link')];
-    console.log(homeLinks);
     homeLinks.forEach(element => {
         element.addEventListener('click', () => {
-            printSection(element.textContent.toUpperCase());
+            printPage(element.textContent.toUpperCase());
         });
     });
 }
-
 

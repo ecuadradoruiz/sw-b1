@@ -1,9 +1,8 @@
 
 const printCharacters = () => {
     mainContainer.innerHTML = '...Cargando...';
-    getCharacters().then( response => {
+    getCharacters().then(response => {
         let charactersCards = formatCharactersCards(response);
-        console.log(charactersCards);
         mainContainer.innerHTML = `
             <section class="section">
                 <h3 class="section__title"> CHARACTERS </h3>
@@ -20,20 +19,20 @@ const printCharacters = () => {
 }
 
 const formatCharactersCards = (characters) => {
-    return characters   
+    return characters
         .map(character => {
-            return  `
+            return `
             <div class="card">
-                <h4 class="card__title">  ${character.name} </h4>
+                <h4 class="card__title"> ${character.name} </h4>
                 <img class="card__img" src="${character.img}">
                 <div class="card__info-container">
-                    <p class="card__info-title">  GENDER </p>
-                    <p class="card__info">  ${character.gender} </p>
-                    <p class="card__info-title">  HEIGHT </p>
-                    <p class="card__info">  ${character.height} </p>
-                    <p class="card__info-title">  MASS </p>
-                    <p class="card__info">  ${character.mass} </p>
-                    <a class="card__link" href="#">  + MORE DETAILS </a>
+                    <p class="card__info-title"> GENDER </p>
+                    <p class="card__info"> ${character.gender} </p>
+                    <p class="card__info-title"> HEIGHT </p>
+                    <p class="card__info"> ${character.height} </p>
+                    <p class="card__info-title"> MASS </p>
+                    <p class="card__info"> ${character.mass} </p>
+                    <a class="card__link" href="#"> + MORE DETAILS </a>
                 </div>
             </div>`
         }).join('');
@@ -42,7 +41,7 @@ const formatCharactersCards = (characters) => {
 
 const addEventsToCharacterLinks = (characters) => {
     let cardLinks = [...document.getElementsByClassName('card__link')];
-    cardLinks.forEach((element,i) => {
+    cardLinks.forEach((element, i) => {
         element.addEventListener('click', () => {
             printDetailCharacter(characters[i].urlDetail);
         });
@@ -51,7 +50,7 @@ const addEventsToCharacterLinks = (characters) => {
 
 
 const getCharacters = async () => {
-    let url =  URL_BASE + '/people/';
+    let url = URL_BASE + '/people/';
     let urlNext = null;
     let data;
     let dataAll = [];
@@ -68,7 +67,7 @@ const getCharacters = async () => {
     dataAll = [
         {
             "name": "LUKE SKYWALKER",
-            "img": "assets/images/people/1.jpg",
+            "img": "assets/images/characters/1.jpg",
             "gender": "male",
             "mass": "77",
             "height": "172",
@@ -77,7 +76,7 @@ const getCharacters = async () => {
         },
         {
             "name": "C-3PO",
-            "img": "assets/images/people/2.jpg",
+            "img": "assets/images/characters/2.jpg",
             "gender": "n/a",
             "mass": "75",
             "height": "167",
@@ -86,7 +85,7 @@ const getCharacters = async () => {
         },
         {
             "name": "R2-D2",
-            "img": "assets/images/people/3.jpg",
+            "img": "assets/images/characters/3.jpg",
             "gender": "n/a",
             "mass": "32",
             "height": "96",
@@ -95,7 +94,7 @@ const getCharacters = async () => {
         },
         {
             "name": "DARTH VADER",
-            "img": "assets/images/people/4.jpg",
+            "img": "assets/images/characters/4.jpg",
             "gender": "male",
             "mass": "136",
             "height": "202",
@@ -104,7 +103,7 @@ const getCharacters = async () => {
         },
         {
             "name": "LEIA ORGANA",
-            "img": "assets/images/people/5.jpg",
+            "img": "assets/images/characters/5.jpg",
             "gender": "female",
             "mass": "49",
             "height": "150",
@@ -113,7 +112,7 @@ const getCharacters = async () => {
         },
         {
             "name": "OWEN LARS",
-            "img": "assets/images/people/6.jpg",
+            "img": "assets/images/characters/6.jpg",
             "gender": "male",
             "mass": "120",
             "height": "178",
@@ -122,7 +121,7 @@ const getCharacters = async () => {
         },
         {
             "name": "BERU WHITESUN LARS",
-            "img": "assets/images/people/7.jpg",
+            "img": "assets/images/characters/7.jpg",
             "gender": "female",
             "mass": "75",
             "height": "165",
@@ -131,7 +130,7 @@ const getCharacters = async () => {
         },
         {
             "name": "R5-D4",
-            "img": "assets/images/people/8.jpg",
+            "img": "assets/images/characters/8.jpg",
             "gender": "n/a",
             "mass": "32",
             "height": "97",
@@ -140,7 +139,7 @@ const getCharacters = async () => {
         },
         {
             "name": "BIGGS DARKLIGHTER",
-            "img": "assets/images/people/9.jpg",
+            "img": "assets/images/characters/9.jpg",
             "gender": "male",
             "mass": "84",
             "height": "183",
@@ -149,7 +148,7 @@ const getCharacters = async () => {
         },
         {
             "name": "OBI-WAN KENOBI",
-            "img": "assets/images/people/10.jpg",
+            "img": "assets/images/characters/10.jpg",
             "gender": "male",
             "mass": "77",
             "height": "182",
@@ -158,7 +157,7 @@ const getCharacters = async () => {
         },
         {
             "name": "ANAKIN SKYWALKER",
-            "img": "assets/images/people/11.jpg",
+            "img": "assets/images/characters/11.jpg",
             "gender": "male",
             "mass": "84",
             "height": "188",
@@ -167,7 +166,7 @@ const getCharacters = async () => {
         },
         {
             "name": "WILHUFF TARKIN",
-            "img": "assets/images/people/12.jpg",
+            "img": "assets/images/characters/12.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "180",
@@ -176,7 +175,7 @@ const getCharacters = async () => {
         },
         {
             "name": "CHEWBACCA",
-            "img": "assets/images/people/13.jpg",
+            "img": "assets/images/characters/13.jpg",
             "gender": "male",
             "mass": "112",
             "height": "228",
@@ -185,7 +184,7 @@ const getCharacters = async () => {
         },
         {
             "name": "HAN SOLO",
-            "img": "assets/images/people/14.jpg",
+            "img": "assets/images/characters/14.jpg",
             "gender": "male",
             "mass": "80",
             "height": "180",
@@ -194,7 +193,7 @@ const getCharacters = async () => {
         },
         {
             "name": "GREEDO",
-            "img": "assets/images/people/15.jpg",
+            "img": "assets/images/characters/15.jpg",
             "gender": "male",
             "mass": "74",
             "height": "173",
@@ -203,7 +202,7 @@ const getCharacters = async () => {
         },
         {
             "name": "JABBA DESILIJIC TIURE",
-            "img": "assets/images/people/16.jpg",
+            "img": "assets/images/characters/16.jpg",
             "gender": "hermaphrodite",
             "mass": "1,358",
             "height": "175",
@@ -212,7 +211,7 @@ const getCharacters = async () => {
         },
         {
             "name": "WEDGE ANTILLES",
-            "img": "assets/images/people/18.jpg",
+            "img": "assets/images/characters/18.jpg",
             "gender": "male",
             "mass": "77",
             "height": "170",
@@ -221,7 +220,7 @@ const getCharacters = async () => {
         },
         {
             "name": "JEK TONO PORKINS",
-            "img": "assets/images/people/19.jpg",
+            "img": "assets/images/characters/19.jpg",
             "gender": "male",
             "mass": "110",
             "height": "180",
@@ -230,7 +229,7 @@ const getCharacters = async () => {
         },
         {
             "name": "YODA",
-            "img": "assets/images/people/20.jpg",
+            "img": "assets/images/characters/20.jpg",
             "gender": "male",
             "mass": "17",
             "height": "66",
@@ -239,7 +238,7 @@ const getCharacters = async () => {
         },
         {
             "name": "PALPATINE",
-            "img": "assets/images/people/21.jpg",
+            "img": "assets/images/characters/21.jpg",
             "gender": "male",
             "mass": "75",
             "height": "170",
@@ -248,7 +247,7 @@ const getCharacters = async () => {
         },
         {
             "name": "BOBA FETT",
-            "img": "assets/images/people/22.jpg",
+            "img": "assets/images/characters/22.jpg",
             "gender": "male",
             "mass": "78.2",
             "height": "183",
@@ -257,7 +256,7 @@ const getCharacters = async () => {
         },
         {
             "name": "IG-88",
-            "img": "assets/images/people/23.jpg",
+            "img": "assets/images/characters/23.jpg",
             "gender": "none",
             "mass": "140",
             "height": "200",
@@ -266,7 +265,7 @@ const getCharacters = async () => {
         },
         {
             "name": "BOSSK",
-            "img": "assets/images/people/24.jpg",
+            "img": "assets/images/characters/24.jpg",
             "gender": "male",
             "mass": "113",
             "height": "190",
@@ -275,7 +274,7 @@ const getCharacters = async () => {
         },
         {
             "name": "LANDO CALRISSIAN",
-            "img": "assets/images/people/25.jpg",
+            "img": "assets/images/characters/25.jpg",
             "gender": "male",
             "mass": "79",
             "height": "177",
@@ -284,7 +283,7 @@ const getCharacters = async () => {
         },
         {
             "name": "LOBOT",
-            "img": "assets/images/people/26.jpg",
+            "img": "assets/images/characters/26.jpg",
             "gender": "male",
             "mass": "79",
             "height": "175",
@@ -293,7 +292,7 @@ const getCharacters = async () => {
         },
         {
             "name": "ACKBAR",
-            "img": "assets/images/people/27.jpg",
+            "img": "assets/images/characters/27.jpg",
             "gender": "male",
             "mass": "83",
             "height": "180",
@@ -302,7 +301,7 @@ const getCharacters = async () => {
         },
         {
             "name": "MON MOTHMA",
-            "img": "assets/images/people/28.jpg",
+            "img": "assets/images/characters/28.jpg",
             "gender": "female",
             "mass": "unknown",
             "height": "150",
@@ -311,7 +310,7 @@ const getCharacters = async () => {
         },
         {
             "name": "ARVEL CRYNYD",
-            "img": "assets/images/people/29.jpg",
+            "img": "assets/images/characters/29.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "unknown",
@@ -320,7 +319,7 @@ const getCharacters = async () => {
         },
         {
             "name": "WICKET SYSTRI WARRICK",
-            "img": "assets/images/people/30.jpg",
+            "img": "assets/images/characters/30.jpg",
             "gender": "male",
             "mass": "20",
             "height": "88",
@@ -329,7 +328,7 @@ const getCharacters = async () => {
         },
         {
             "name": "NIEN NUNB",
-            "img": "assets/images/people/31.jpg",
+            "img": "assets/images/characters/31.jpg",
             "gender": "male",
             "mass": "68",
             "height": "160",
@@ -338,7 +337,7 @@ const getCharacters = async () => {
         },
         {
             "name": "QUI-GON JINN",
-            "img": "assets/images/people/32.jpg",
+            "img": "assets/images/characters/32.jpg",
             "gender": "male",
             "mass": "89",
             "height": "193",
@@ -347,7 +346,7 @@ const getCharacters = async () => {
         },
         {
             "name": "NUTE GUNRAY",
-            "img": "assets/images/people/33.jpg",
+            "img": "assets/images/characters/33.jpg",
             "gender": "male",
             "mass": "90",
             "height": "191",
@@ -356,7 +355,7 @@ const getCharacters = async () => {
         },
         {
             "name": "FINIS VALORUM",
-            "img": "assets/images/people/34.jpg",
+            "img": "assets/images/characters/34.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "170",
@@ -365,7 +364,7 @@ const getCharacters = async () => {
         },
         {
             "name": "PADMÉ AMIDALA",
-            "img": "assets/images/people/35.jpg",
+            "img": "assets/images/characters/35.jpg",
             "gender": "female",
             "mass": "45",
             "height": "185",
@@ -374,7 +373,7 @@ const getCharacters = async () => {
         },
         {
             "name": "JAR JAR BINKS",
-            "img": "assets/images/people/36.jpg",
+            "img": "assets/images/characters/36.jpg",
             "gender": "male",
             "mass": "66",
             "height": "196",
@@ -383,7 +382,7 @@ const getCharacters = async () => {
         },
         {
             "name": "ROOS TARPALS",
-            "img": "assets/images/people/37.jpg",
+            "img": "assets/images/characters/37.jpg",
             "gender": "male",
             "mass": "82",
             "height": "224",
@@ -392,7 +391,7 @@ const getCharacters = async () => {
         },
         {
             "name": "RUGOR NASS",
-            "img": "assets/images/people/38.jpg",
+            "img": "assets/images/characters/38.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "206",
@@ -401,7 +400,7 @@ const getCharacters = async () => {
         },
         {
             "name": "RIC OLIÉ",
-            "img": "assets/images/people/39.jpg",
+            "img": "assets/images/characters/39.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "183",
@@ -410,7 +409,7 @@ const getCharacters = async () => {
         },
         {
             "name": "WATTO",
-            "img": "assets/images/people/40.jpg",
+            "img": "assets/images/characters/40.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "137",
@@ -419,7 +418,7 @@ const getCharacters = async () => {
         },
         {
             "name": "SEBULBA",
-            "img": "assets/images/people/41.jpg",
+            "img": "assets/images/characters/41.jpg",
             "gender": "male",
             "mass": "40",
             "height": "112",
@@ -428,7 +427,7 @@ const getCharacters = async () => {
         },
         {
             "name": "QUARSH PANAKA",
-            "img": "assets/images/people/42.jpg",
+            "img": "assets/images/characters/42.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "183",
@@ -437,7 +436,7 @@ const getCharacters = async () => {
         },
         {
             "name": "SHMI SKYWALKER",
-            "img": "assets/images/people/43.jpg",
+            "img": "assets/images/characters/43.jpg",
             "gender": "female",
             "mass": "unknown",
             "height": "163",
@@ -446,7 +445,7 @@ const getCharacters = async () => {
         },
         {
             "name": "DARTH MAUL",
-            "img": "assets/images/people/44.jpg",
+            "img": "assets/images/characters/44.jpg",
             "gender": "male",
             "mass": "80",
             "height": "175",
@@ -455,7 +454,7 @@ const getCharacters = async () => {
         },
         {
             "name": "BIB FORTUNA",
-            "img": "assets/images/people/45.jpg",
+            "img": "assets/images/characters/45.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "180",
@@ -464,7 +463,7 @@ const getCharacters = async () => {
         },
         {
             "name": "AYLA SECURA",
-            "img": "assets/images/people/46.jpg",
+            "img": "assets/images/characters/46.jpg",
             "gender": "female",
             "mass": "55",
             "height": "178",
@@ -473,7 +472,7 @@ const getCharacters = async () => {
         },
         {
             "name": "RATTS TYEREL",
-            "img": "assets/images/people/47.jpg",
+            "img": "assets/images/characters/47.jpg",
             "gender": "male",
             "mass": "15",
             "height": "79",
@@ -482,7 +481,7 @@ const getCharacters = async () => {
         },
         {
             "name": "DUD BOLT",
-            "img": "assets/images/people/48.jpg",
+            "img": "assets/images/characters/48.jpg",
             "gender": "male",
             "mass": "45",
             "height": "94",
@@ -491,7 +490,7 @@ const getCharacters = async () => {
         },
         {
             "name": "GASGANO",
-            "img": "assets/images/people/49.jpg",
+            "img": "assets/images/characters/49.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "122",
@@ -500,7 +499,7 @@ const getCharacters = async () => {
         },
         {
             "name": "BEN QUADINAROS",
-            "img": "assets/images/people/50.jpg",
+            "img": "assets/images/characters/50.jpg",
             "gender": "male",
             "mass": "65",
             "height": "163",
@@ -509,7 +508,7 @@ const getCharacters = async () => {
         },
         {
             "name": "MACE WINDU",
-            "img": "assets/images/people/51.jpg",
+            "img": "assets/images/characters/51.jpg",
             "gender": "male",
             "mass": "84",
             "height": "188",
@@ -518,7 +517,7 @@ const getCharacters = async () => {
         },
         {
             "name": "KI-ADI-MUNDI",
-            "img": "assets/images/people/52.jpg",
+            "img": "assets/images/characters/52.jpg",
             "gender": "male",
             "mass": "82",
             "height": "198",
@@ -527,7 +526,7 @@ const getCharacters = async () => {
         },
         {
             "name": "KIT FISTO",
-            "img": "assets/images/people/53.jpg",
+            "img": "assets/images/characters/53.jpg",
             "gender": "male",
             "mass": "87",
             "height": "196",
@@ -536,7 +535,7 @@ const getCharacters = async () => {
         },
         {
             "name": "EETH KOTH",
-            "img": "assets/images/people/54.jpg",
+            "img": "assets/images/characters/54.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "171",
@@ -545,7 +544,7 @@ const getCharacters = async () => {
         },
         {
             "name": "ADI GALLIA",
-            "img": "assets/images/people/55.jpg",
+            "img": "assets/images/characters/55.jpg",
             "gender": "female",
             "mass": "50",
             "height": "184",
@@ -554,7 +553,7 @@ const getCharacters = async () => {
         },
         {
             "name": "SAESEE TIIN",
-            "img": "assets/images/people/56.jpg",
+            "img": "assets/images/characters/56.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "188",
@@ -563,7 +562,7 @@ const getCharacters = async () => {
         },
         {
             "name": "YARAEL POOF",
-            "img": "assets/images/people/57.jpg",
+            "img": "assets/images/characters/57.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "264",
@@ -572,7 +571,7 @@ const getCharacters = async () => {
         },
         {
             "name": "PLO KOON",
-            "img": "assets/images/people/58.jpg",
+            "img": "assets/images/characters/58.jpg",
             "gender": "male",
             "mass": "80",
             "height": "188",
@@ -581,7 +580,7 @@ const getCharacters = async () => {
         },
         {
             "name": "MAS AMEDDA",
-            "img": "assets/images/people/59.jpg",
+            "img": "assets/images/characters/59.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "196",
@@ -590,7 +589,7 @@ const getCharacters = async () => {
         },
         {
             "name": "GREGAR TYPHO",
-            "img": "assets/images/people/60.jpg",
+            "img": "assets/images/characters/60.jpg",
             "gender": "male",
             "mass": "85",
             "height": "185",
@@ -599,7 +598,7 @@ const getCharacters = async () => {
         },
         {
             "name": "CORDÉ",
-            "img": "assets/images/people/61.jpg",
+            "img": "assets/images/characters/61.jpg",
             "gender": "female",
             "mass": "unknown",
             "height": "157",
@@ -608,7 +607,7 @@ const getCharacters = async () => {
         },
         {
             "name": "CLIEGG LARS",
-            "img": "assets/images/people/62.jpg",
+            "img": "assets/images/characters/62.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "183",
@@ -617,7 +616,7 @@ const getCharacters = async () => {
         },
         {
             "name": "POGGLE THE LESSER",
-            "img": "assets/images/people/63.jpg",
+            "img": "assets/images/characters/63.jpg",
             "gender": "male",
             "mass": "80",
             "height": "183",
@@ -626,7 +625,7 @@ const getCharacters = async () => {
         },
         {
             "name": "LUMINARA UNDULI",
-            "img": "assets/images/people/64.jpg",
+            "img": "assets/images/characters/64.jpg",
             "gender": "female",
             "mass": "56.2",
             "height": "170",
@@ -635,7 +634,7 @@ const getCharacters = async () => {
         },
         {
             "name": "BARRISS OFFEE",
-            "img": "assets/images/people/65.jpg",
+            "img": "assets/images/characters/65.jpg",
             "gender": "female",
             "mass": "50",
             "height": "166",
@@ -644,7 +643,7 @@ const getCharacters = async () => {
         },
         {
             "name": "DORMÉ",
-            "img": "assets/images/people/66.jpg",
+            "img": "assets/images/characters/66.jpg",
             "gender": "female",
             "mass": "unknown",
             "height": "165",
@@ -653,7 +652,7 @@ const getCharacters = async () => {
         },
         {
             "name": "DOOKU",
-            "img": "assets/images/people/67.jpg",
+            "img": "assets/images/characters/67.jpg",
             "gender": "male",
             "mass": "80",
             "height": "193",
@@ -662,7 +661,7 @@ const getCharacters = async () => {
         },
         {
             "name": "BAIL PRESTOR ORGANA",
-            "img": "assets/images/people/68.jpg",
+            "img": "assets/images/characters/68.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "191",
@@ -671,7 +670,7 @@ const getCharacters = async () => {
         },
         {
             "name": "JANGO FETT",
-            "img": "assets/images/people/69.jpg",
+            "img": "assets/images/characters/69.jpg",
             "gender": "male",
             "mass": "79",
             "height": "183",
@@ -680,7 +679,7 @@ const getCharacters = async () => {
         },
         {
             "name": "ZAM WESELL",
-            "img": "assets/images/people/70.jpg",
+            "img": "assets/images/characters/70.jpg",
             "gender": "female",
             "mass": "55",
             "height": "168",
@@ -689,7 +688,7 @@ const getCharacters = async () => {
         },
         {
             "name": "DEXTER JETTSTER",
-            "img": "assets/images/people/71.jpg",
+            "img": "assets/images/characters/71.jpg",
             "gender": "male",
             "mass": "102",
             "height": "198",
@@ -698,7 +697,7 @@ const getCharacters = async () => {
         },
         {
             "name": "LAMA SU",
-            "img": "assets/images/people/72.jpg",
+            "img": "assets/images/characters/72.jpg",
             "gender": "male",
             "mass": "88",
             "height": "229",
@@ -707,7 +706,7 @@ const getCharacters = async () => {
         },
         {
             "name": "TAUN WE",
-            "img": "assets/images/people/73.jpg",
+            "img": "assets/images/characters/73.jpg",
             "gender": "female",
             "mass": "unknown",
             "height": "213",
@@ -716,7 +715,7 @@ const getCharacters = async () => {
         },
         {
             "name": "JOCASTA NU",
-            "img": "assets/images/people/74.jpg",
+            "img": "assets/images/characters/74.jpg",
             "gender": "female",
             "mass": "unknown",
             "height": "167",
@@ -725,7 +724,7 @@ const getCharacters = async () => {
         },
         {
             "name": "R4-P17",
-            "img": "assets/images/people/75.jpg",
+            "img": "assets/images/characters/75.jpg",
             "gender": "female",
             "mass": "unknown",
             "height": "96",
@@ -734,7 +733,7 @@ const getCharacters = async () => {
         },
         {
             "name": "WAT TAMBOR",
-            "img": "assets/images/people/76.jpg",
+            "img": "assets/images/characters/76.jpg",
             "gender": "male",
             "mass": "48",
             "height": "193",
@@ -743,7 +742,7 @@ const getCharacters = async () => {
         },
         {
             "name": "SAN HILL",
-            "img": "assets/images/people/77.jpg",
+            "img": "assets/images/characters/77.jpg",
             "gender": "male",
             "mass": "unknown",
             "height": "191",
@@ -752,7 +751,7 @@ const getCharacters = async () => {
         },
         {
             "name": "SHAAK TI",
-            "img": "assets/images/people/78.jpg",
+            "img": "assets/images/characters/78.jpg",
             "gender": "female",
             "mass": "57",
             "height": "178",
@@ -761,7 +760,7 @@ const getCharacters = async () => {
         },
         {
             "name": "GRIEVOUS",
-            "img": "assets/images/people/79.jpg",
+            "img": "assets/images/characters/79.jpg",
             "gender": "male",
             "mass": "159",
             "height": "216",
@@ -770,7 +769,7 @@ const getCharacters = async () => {
         },
         {
             "name": "TARFFUL",
-            "img": "assets/images/people/80.jpg",
+            "img": "assets/images/characters/80.jpg",
             "gender": "male",
             "mass": "136",
             "height": "234",
@@ -779,7 +778,7 @@ const getCharacters = async () => {
         },
         {
             "name": "RAYMUS ANTILLES",
-            "img": "assets/images/people/81.jpg",
+            "img": "assets/images/characters/81.jpg",
             "gender": "male",
             "mass": "79",
             "height": "188",
@@ -788,7 +787,7 @@ const getCharacters = async () => {
         },
         {
             "name": "SLY MOORE",
-            "img": "assets/images/people/82.jpg",
+            "img": "assets/images/characters/82.jpg",
             "gender": "female",
             "mass": "48",
             "height": "178",
@@ -797,7 +796,7 @@ const getCharacters = async () => {
         },
         {
             "name": "TION MEDON",
-            "img": "assets/images/people/83.jpg",
+            "img": "assets/images/characters/83.jpg",
             "gender": "male",
             "mass": "80",
             "height": "206",
@@ -810,11 +809,11 @@ const getCharacters = async () => {
 }
 
 const mapDataCharacters = (data) => {
-    let dataMapped =  data
-        .map(character => { 
+    let dataMapped = data
+        .map(character => {
             let object = {
-                name : character.name.toUpperCase(),
-                img: "assets/images/people/" + character.url.replace("https://swapi.dev/api/people/", "").split('/')[0] + ".jpg",
+                name: character.name.toUpperCase(),
+                img: "assets/images/characters/" + character.url.replace("https://swapi.dev/api/people/", "").split('/')[0] + ".jpg",
                 gender: character.gender,
                 mass: character.mass,
                 height: character.height,
@@ -826,6 +825,4 @@ const mapDataCharacters = (data) => {
 
     return dataMapped;
 }
-
-
 

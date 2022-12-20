@@ -1,9 +1,8 @@
 
 const printSpecies = () => {
     mainContainer.innerHTML = '...Cargando...';
-    getSpecies().then( response => {
+    getSpecies().then(response => {
         let speciesCards = formatSpeciesCards(response);
-        console.log(speciesCards);
         mainContainer.innerHTML = `
             <section class="section">
                 <h3 class="section__title"> SPECIES </h3>
@@ -20,19 +19,19 @@ const printSpecies = () => {
 }
 
 const formatSpeciesCards = (species) => {
-    return species   
+    return species
         .map(specie => {
-            return  `
+            return `
             <div class="card">
-                <h4 class="card__title">  ${specie.name} </h4>
+                <h4 class="card__title"> ${specie.name} </h4>
                 <img class="card__img" src="${specie.img}">
                 <div class="card__info-container">
                     <p class="card__info-title">  CLASSIFICATION </p>
-                    <p class="card__info">  ${specie.classification} </p>
+                    <p class="card__info"> ${specie.classification} </p>
                     <p class="card__info-title">  LIFESPAN </p>
-                    <p class="card__info">  ${specie.lifespan} </p>
+                    <p class="card__info"> ${specie.lifespan} </p>
                     <p class="card__info-title">  LANGUAGE </p>
-                    <p class="card__info">  ${specie.language} </p>
+                    <p class="card__info"> ${specie.language} </p>
                     <a class="card__link" href="#">  + MORE DETAILS </a>
                 </div>
             </div>`
@@ -42,7 +41,7 @@ const formatSpeciesCards = (species) => {
 
 const addEventsToSpeciesLinks = (species) => {
     let cardLinks = [...document.getElementsByClassName('card__link')];
-    cardLinks.forEach((element,i) => {
+    cardLinks.forEach((element, i) => {
         element.addEventListener('click', () => {
             printDetailSpecie(species[i].urlDetail);
         });
@@ -51,7 +50,7 @@ const addEventsToSpeciesLinks = (species) => {
 
 
 const getSpecies = async () => {
-    let url =  URL_BASE + '/species/';
+    let url = URL_BASE + '/species/';
     let urlNext = null;
     let data;
     let dataAll = [];
@@ -312,11 +311,10 @@ const getSpecies = async () => {
 }
 
 const mapDataSpecies = (data) => {
-    let dataMapped =  data
-        .map(specie => { 
-            console.log(specie);
+    let dataMapped = data
+        .map(specie => {
             let object = {
-                name : specie.name.toUpperCase(),
+                name: specie.name.toUpperCase(),
                 img: "assets/images/species/" + specie.url.replace("https://swapi.dev/api/species/", "").split('/')[0] + ".jpg",
                 classification: specie.classification,
                 language: specie.language,
@@ -328,6 +326,4 @@ const mapDataSpecies = (data) => {
 
     return dataMapped;
 }
-
-
 
