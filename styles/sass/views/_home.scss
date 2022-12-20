@@ -1,0 +1,22 @@
+.section-home{
+    text-align: right;
+    padding: 20px;
+    @include adaptTo('not-mobile'){text-align: center;}
+
+    @include adaptTo('desktop-xl'){
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    &__title{
+        font-size: 14px;
+        font-family: 'Poller One';
+        margin: 30px auto;
+        @include adaptTo('not-mobile'){font-size: 24px;}
+    }
+
+    &__description{
+        font-size: 16px;
+        @include adaptTo('not-mobile'){font-size: 24px;}
+    }
+}

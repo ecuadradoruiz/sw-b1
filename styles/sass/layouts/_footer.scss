@@ -1,0 +1,40 @@
+.footer{
+    height: 75px;
+    border-bottom: 12px solid #E4D18C;
+    background-color: #F3F3F3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #B7B7B7;
+    margin-top: 65px;
+
+    @include adaptTo('not-mobile'){
+        border-bottom: 20px solid #E4D18C;
+        height: 100px;
+    }
+
+    @include adaptTo('desktop-xl'){
+        border-bottom: 0px;
+        border-radius: 100px;
+        max-width: 1280px;
+        margin: 50px auto 65px auto;
+    }
+
+
+    &__title{
+        font-family: 'Poller One';
+        font-size: 14px;
+        @include adaptTo('not-mobile'){font-size: 20px;}
+    }
+
+    &__copyright{
+
+        display: block;
+        font-size: 14px;
+
+        @include adaptTo('not-mobile'){font-size: 16px;}
+    }
+}
+
+
+

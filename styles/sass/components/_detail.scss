@@ -1,0 +1,177 @@
+.detail {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+    padding-bottom: 30px;
+
+    @include adaptTo('not-mobile') {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    &__info-container {
+        margin: 20px;
+        width: 100%;
+        margin-bottom: -25px;
+
+        @include adaptTo('not-mobile') {
+            max-width: 900px;
+            margin: 0 auto;
+            width: calc(100% - 250px);
+        }
+    }
+
+
+    &__title {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        font-weight: 700;
+        font-size: 24px;
+
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+
+        @include adaptTo('not-mobile') {
+            font-size: 40px;
+            width: 100%;
+            min-width: 500px;
+            padding: 20px;
+            background-color: #141414;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__img {
+        width: 100%;
+
+        @include adaptTo('not-mobile') {
+            width: 250px;
+        }
+    }
+
+    &__info {
+        font-size: 18px;
+        margin-bottom: 20px;
+
+        @include adaptTo('not-mobile') {
+            font-size: 20px;
+            padding-left: 30px;
+        }
+    }
+
+    &__info-title {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+
+        @include adaptTo('not-mobile') {
+            font-size: 16px;
+            padding-left: 30px;
+        }
+    }
+
+    &__options-container {
+        margin: 20px;
+        width: 100%;
+
+    }
+
+
+    &__options-title {
+        font-size: 14px;
+        font-weight: 700;
+        padding: 30px 0;
+
+        @include adaptTo('tablet') {
+            font-size: 16px;
+        }
+
+        @include adaptTo('desktop-m') {
+            font-size: 16px;
+        }
+
+        @include adaptTo('desktop-l') {
+            font-size: 24px;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        @include adaptTo('desktop-xl') {
+            font-size: 24px;
+            text-align: center;
+            padding: 50px 0;
+        }
+    }
+
+
+    &__img-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+
+        @include adaptTo('desktop-l') {
+            justify-content: center;
+        }
+
+        @include adaptTo('desktop-xl') {
+            justify-content: center;
+        }
+
+    }
+
+
+    &__options-img {
+        width: 83px;
+        border-radius: 100px;
+        margin: 5px;
+
+        @include adaptTo('not-mobile') {
+            margin: 15px;
+            width: 100px;
+        }
+    }
+
+
+    &--starships {
+        @include adaptTo('not-mobile') {
+
+            .detail__img {
+                width: 500px;
+                margin: 0 auto;
+            }
+
+            .detail__title {
+                border-radius: 200px;
+            }
+
+            .detail__info-container{
+                padding-left: 0;
+                width: 100%;
+                max-width: 1280px;
+            }
+
+            .detail__options-container{
+                margin-left: 30px;
+            }
+        }
+
+
+        @include adaptTo('desktop-l'){
+            text-align: center;
+        }
+
+        @include adaptTo('desktop-xl'){
+            text-align: center;
+        }
+    }
+
+
+
+
+}
