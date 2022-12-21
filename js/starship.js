@@ -18,44 +18,17 @@ const printDetailStarship = (url) => {
 
 const getStarship = async (urlStarship) => {
     let url = urlStarship;
-    /*
-    response = await fetch(url);
-    data = await response.json();
-    console.log(data);
-*/
-    data = {
-        "name": "Death Star",
-        "model": "DS-1 Orbital Battle Station",
-        "manufacturer": "Imperial Department of Military Research, Sienar Fleet Systems",
-        "cost_in_credits": "1000000000000",
-        "length": "120000",
-        "max_atmosphering_speed": "n/a",
-        "crew": "342,953",
-        "passengers": "843,342",
-        "cargo_capacity": "1000000000000",
-        "consumables": "3 years",
-        "hyperdrive_rating": "4.0",
-        "MGLT": "10",
-        "starship_class": "Deep Space Mobile Battlestation",
-        "pilots": [],
-        "films": [
-            "https://swapi.dev/api/films/1/"
-        ],
-        "created": "2014-12-10T16:36:50.509000Z",
-        "edited": "2014-12-20T21:26:24.783000Z",
-        "url": "https://swapi.dev/api/starships/9/"
-    };
-
+    let response = await fetch(url);
+    let data = await response.json();
     data = formatDataStarship(data);
 
     return data;
 }
 
-
 const formatDataStarship = (data) => {
     let dataFormated = {
         name: data.name.toUpperCase(),
-        img: "assets/images/starships/" + data.url.replace("https://swapi.dev/api/starships/", "").split('/')[0] + ".jpg",
+        img: "assets/images/starships/" + data.url.replace("https://swapi.dev/api/starships/", "").replace("/", "") + ".jpg",
         class: data.starship_class,
         model: data.model,
         cargo_capacity: data.cargo_capacity,
@@ -66,11 +39,8 @@ const formatDataStarship = (data) => {
     return dataFormated;
 }
 
-
 const formatStarshipDetail = (starship) => {
-
     let films = formatOptions('films', starship.films);
-
 
     return `
         <div class="detail detail--starships">
@@ -94,3 +64,30 @@ const formatStarshipDetail = (starship) => {
         </div>
     `;
 }
+
+/*  
+    MOCK
+    -----------
+    {
+        "name": "Death Star",
+        "model": "DS-1 Orbital Battle Station",
+        "manufacturer": "Imperial Department of Military Research, Sienar Fleet Systems",
+        "cost_in_credits": "1000000000000",
+        "length": "120000",
+        "max_atmosphering_speed": "n/a",
+        "crew": "342,953",
+        "passengers": "843,342",
+        "cargo_capacity": "1000000000000",
+        "consumables": "3 years",
+        "hyperdrive_rating": "4.0",
+        "MGLT": "10",
+        "starship_class": "Deep Space Mobile Battlestation",
+        "pilots": [],
+        "films": [
+            "https://swapi.dev/api/films/1/"
+        ],
+        "created": "2014-12-10T16:36:50.509000Z",
+        "edited": "2014-12-20T21:26:24.783000Z",
+        "url": "https://swapi.dev/api/starships/9/"
+    };
+*/

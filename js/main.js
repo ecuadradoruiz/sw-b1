@@ -9,6 +9,7 @@ window.onload = () => {
 
 // Unificamos navegación
 const printPage = (section, url) => {
+    console.log('que entra?', section);
     // Cabecera
     adaptHeader(section);
 

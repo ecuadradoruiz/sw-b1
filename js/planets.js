@@ -46,13 +46,11 @@ const addEventsToPlanetsLinks = (planets) => {
     });
 }
 
-
 const getPlanets = async () => {
     let url = URL_BASE + '/planets/';
     let urlNext = null;
     let data;
     let dataAll = [];
-    /*
     do {
         response = (urlNext !== null) ? await fetch(urlNext) : await fetch(url);
         data = await response.json();
@@ -60,9 +58,31 @@ const getPlanets = async () => {
         urlNext = data.next;
         console.log(dataAll);
     } while (data.next !==null)
-    */
 
-    data = {
+    return dataAll;
+}
+
+const mapDataPlanets = (data) => {
+    let dataMapped = data
+        .map(planet => {
+            let object = {
+                name: planet.name.toUpperCase(),
+                img: "assets/images/planets/" + planet.url.replace("https://swapi.dev/api/planets/", "").replace("/", "") + ".jpg",
+                population: planet.population,
+                diameter: planet.diameter,
+                climate: planet.climate,
+                urlDetail: planet.url
+            }
+            return object;
+        });
+
+    return dataMapped;
+}
+
+/*
+    MOCK
+    -----------
+    {
         "count": 60,
         "next": "https://swapi.dev/api/planets/?page=2",
         "previous": null,
@@ -301,26 +321,7 @@ const getPlanets = async () => {
             }
         ]
     };
-    dataAll = mapDataPlanets(data.results);
-    return dataAll;
-}
-
-const mapDataPlanets = (data) => {
-    let dataMapped = data
-        .map(planet => {
-            let object = {
-                name: planet.name.toUpperCase(),
-                img: "assets/images/planets/" + planet.url.replace("https://swapi.dev/api/planets/", "").split('/')[0] + ".jpg",
-                population: planet.population,
-                diameter: planet.diameter,
-                climate: planet.climate,
-                urlDetail: planet.url
-            }
-            return object;
-        });
-
-    return dataMapped;
-}
+    */
 
 
 

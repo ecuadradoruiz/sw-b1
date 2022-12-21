@@ -13,9 +13,7 @@ const printSpecies = () => {
         `;
 
         addEventsToSpeciesLinks(response);
-    })
-
-
+    });
 }
 
 const formatSpeciesCards = (species) => {
@@ -38,7 +36,6 @@ const formatSpeciesCards = (species) => {
         }).join('');
 }
 
-
 const addEventsToSpeciesLinks = (species) => {
     let cardLinks = [...document.getElementsByClassName('card__link')];
     cardLinks.forEach((element, i) => {
@@ -48,13 +45,11 @@ const addEventsToSpeciesLinks = (species) => {
     });
 }
 
-
 const getSpecies = async () => {
     let url = URL_BASE + '/species/';
     let urlNext = null;
     let data;
     let dataAll = [];
-    /*
     do {
         response = (urlNext !== null) ? await fetch(urlNext) : await fetch(url);
         data = await response.json();
@@ -62,9 +57,31 @@ const getSpecies = async () => {
         urlNext = data.next;
         console.log(dataAll);
     } while (data.next !==null)
-    */
 
-    data = {
+    return dataAll;
+}
+
+const mapDataSpecies = (data) => {
+    let dataMapped = data
+        .map(specie => {
+            let object = {
+                name: specie.name.toUpperCase(),
+                img: "assets/images/species/" + specie.url.replace("https://swapi.dev/api/species/", "").replace("/", "") + ".jpg",
+                classification: specie.classification,
+                language: specie.language,
+                lifespan: specie.average_lifespan,
+                urlDetail: specie.url
+            }
+            return object;
+        });
+
+    return dataMapped;
+}
+
+/*
+    MOCK
+    -----------
+    {
         "count": 60,
         "next": "https://swapi.dev/api/planets/?page=2",
         "previous": null,
@@ -306,24 +323,5 @@ const getSpecies = async () => {
             }
         ]
     };
-    dataAll = mapDataSpecies(data.results);
-    return dataAll;
-}
-
-const mapDataSpecies = (data) => {
-    let dataMapped = data
-        .map(specie => {
-            let object = {
-                name: specie.name.toUpperCase(),
-                img: "assets/images/species/" + specie.url.replace("https://swapi.dev/api/species/", "").split('/')[0] + ".jpg",
-                classification: specie.classification,
-                language: specie.language,
-                lifespan: specie.average_lifespan,
-                urlDetail: specie.url
-            }
-            return object;
-        });
-
-    return dataMapped;
-}
+*/
 

@@ -20,12 +20,55 @@ const printDetailSpecie = (url) => {
 
 const getSpecie = async (urlSpecie) => {
     let url = urlSpecie;
-    /*
-    response = await fetch(url);
-    data = await response.json();
-    console.log(data);
-*/
-    data = {
+    let response = await fetch(url);
+    let data = await response.json();
+    data = formatDataSpecie(data);
+
+    return data;
+}
+
+const formatDataSpecie = (data) => {
+    let dataFormated = {
+        name: data.name.toUpperCase(),
+        img: "assets/images/species/" + data.url.replace("https://swapi.dev/api/species/", "").replace("/", "") + ".jpg",
+        classification: data.classification,
+        language: data.language,
+        lifespan: data.average_lifespan,
+        characters: mapOptions(data.people, 'characters'),
+        films: mapOptions(data.films, 'films')
+    }
+
+    return dataFormated;
+}
+
+const formatSpecieDetail = (specie) => {
+    let films = formatOptions('films', specie.films);
+    let characters = formatOptions('characters', specie.characters);
+
+    return `
+        <div class="detail">
+            <img class="detail__img" src="${specie.img}">
+            <div class="detail__info-container">
+                <h4 class="detail__title"> ${specie.name} </h4>
+                <p class="detail__info-title"> CLASSIFICATION </p>
+                <p class="detail__info"> ${specie.classification} </p>
+                <p class="detail__info-title"> LIFESPAN </p>
+                <p class="detail__info"> ${specie.lifespan} </p>
+                <p class="detail__info-title"> LANGUAGE </p>
+                <p class="detail__info"> ${specie.language} </p>
+            </div>
+            <div class="detail__options-container">
+                ${characters}
+                ${films}
+            </div>
+        </div>
+    `;
+}
+
+/*
+    MOCK
+    -----------
+    {
         "name": "Human",
         "classification": "mammal",
         "designation": "sentient",
@@ -54,47 +97,4 @@ const getSpecie = async (urlSpecie) => {
         "edited": "2014-12-20T21:36:42.136000Z",
         "url": "https://swapi.dev/api/species/1/"
     };
-    data = formatDataSpecie(data);
-
-    return data;
-}
-
-const formatDataSpecie = (data) => {
-    let dataFormated = {
-        name: data.name.toUpperCase(),
-        img: "assets/images/species/" + data.url.replace("https://swapi.dev/api/species/", "").split('/')[0] + ".jpg",
-        classification: data.classification,
-        language: data.language,
-        lifespan: data.average_lifespan,
-        characters: mapOptions(data.people, 'characters'),
-        films: mapOptions(data.films, 'films')
-    }
-
-    return dataFormated;
-}
-
-
-const formatSpecieDetail = (specie) => {
-    let films = formatOptions('films', specie.films);
-    let characters = formatOptions('characters', specie.characters);
-
-
-    return `
-        <div class="detail">
-            <img class="detail__img" src="${specie.img}">
-            <div class="detail__info-container">
-                <h4 class="detail__title"> ${specie.name} </h4>
-                <p class="detail__info-title"> CLASSIFICATION </p>
-                <p class="detail__info"> ${specie.classification} </p>
-                <p class="detail__info-title"> LIFESPAN </p>
-                <p class="detail__info"> ${specie.lifespan} </p>
-                <p class="detail__info-title"> LANGUAGE </p>
-                <p class="detail__info"> ${specie.language} </p>
-            </div>
-            <div class="detail__options-container">
-                ${characters}
-                ${films}
-            </div>
-        </div>
-    `;
-}
+*/
