@@ -2,9 +2,9 @@ const printHome = () => {
     mainContainer.innerHTML = `  
         <section class="section-home">
             <h3 class="section-home__title">ABOUT THE WEB</h3>
-            <p class="section-home__description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation</p>
+            <p class="section-home__description"> La República Galáctica está sumida en el caos. 
+            Los impuestos de las rutas comerciales a los sistemas estelares exteriores están en
+            disputa...</p>
         </section>      
         <section class="section-home">
             <h3 class="section-home__title">SECTIONS</h3> 
